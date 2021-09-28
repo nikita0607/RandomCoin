@@ -52,6 +52,7 @@ while n < 11:
         result = response["result"]
     except:
         print(f"ERROR: RESPONSE: {response}")
+        break
     log_text = ""
     
     if result["requestsLeft"] < 1:
