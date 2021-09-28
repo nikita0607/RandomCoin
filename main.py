@@ -1,5 +1,6 @@
 import requests
 import json
+from os import system
 
 from time import sleep
 
@@ -21,6 +22,7 @@ except Exception as ex:
         
 if api_key.replace(" ", "") == "":
     print("Please, enter your API key from 'https://api.random.org/dashboard'")
+    system("start config.json")
     exit()
     
 data = {
