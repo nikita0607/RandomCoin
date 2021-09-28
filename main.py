@@ -19,6 +19,7 @@ except Exception as ex:
 
 """)
         
+if api_key.replace(" ", "") == "":
     print("Please, enter your API key from 'https://api.random.org/dashboard'")
     exit()
     
@@ -47,7 +48,10 @@ s = 0
 while n < 11:
     response = json.loads(requests.post(url=url, data=data).text)
     
-    result = response["result"]
+    try:
+        result = response["result"]
+    except:
+        print(f"ERROR: RESPONSE: {response}")
     log_text = ""
     
     if result["requestsLeft"] < 1:
@@ -70,6 +74,7 @@ while n < 11:
         print("Выпала решка ")
         
     log_text += f"Подряд выпало: {n}\n"
+    
     print(f"Подряд выпало: {n}\n")
     
     with open("logs.log", "a") as log:
